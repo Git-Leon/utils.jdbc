@@ -16,7 +16,11 @@ public class DatabaseTable {
     private final StatementExecutor executor;
 
     public DatabaseTable(Database database, String tableName) {
-        this.executor = database.getStatementExecutor();
+        StatementExecutor s = database.getStatementExecutor();
+        if(s == null) {
+            throw new RuntimeException();
+        }
+        this.executor = s;
         this.tableName = tableName;
     }
 

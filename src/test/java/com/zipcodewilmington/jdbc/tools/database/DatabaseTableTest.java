@@ -21,7 +21,8 @@ public class DatabaseTableTest {
 
     @Before
     public void setup() {
-        new MigrationsTable(database.getConnection()).importFilesFromResources();
+        MigrationsTable migrationsTable = new MigrationsTable(database.getConnection());
+        migrationsTable.importFilesFromResources();
         this.table = database.getTable("pokemons");
     }
 
